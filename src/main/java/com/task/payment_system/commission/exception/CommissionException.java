@@ -1,8 +1,8 @@
 package com.task.payment_system.commission.exception;
 
 import com.task.payment_system.commission.enums.CommissionError;
-import com.task.payment_system.common.BaseException;
-import com.task.payment_system.common.BaseStatus;
+import com.task.payment_system.common.base.BaseException;
+import com.task.payment_system.common.base.BaseStatus;
 
 public class CommissionException extends BaseException {
 
@@ -14,7 +14,7 @@ public class CommissionException extends BaseException {
         super(status);
     }
 
-    public CommissionException(CommissionError commissionError){
-        super(commissionError.getErrorCode(),commissionError.getErrorMessage());
+    public CommissionException(CommissionError commissionError) {
+        super(commissionError.getErrorCode(), commissionError.getErrorMessage());
     }
 }

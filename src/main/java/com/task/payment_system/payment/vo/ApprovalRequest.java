@@ -1,13 +1,14 @@
 package com.task.payment_system.payment.vo;
 
 import com.task.payment_system.payment.entity.PaymentEntity;
-import com.task.payment_system.payment.enums.ApprovalStatus;
 import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
+@Setter
 @ToString
 public class ApprovalRequest {
 
@@ -19,9 +20,9 @@ public class ApprovalRequest {
     @Valid
     private PaymentDetails paymentDetails;
 
-    public PaymentEntity toEntity(long creditCardId,long commissionId){
+    public PaymentEntity toEntity(long creditCardId, long commissionId) {
         return PaymentEntity.builder()
-            .paymentId("paymentId"+userId)
+            .paymentId("paymentId" + userId)
             .userId(userId)
             .paymentMethod(paymentMethod)
             .amount(amount)

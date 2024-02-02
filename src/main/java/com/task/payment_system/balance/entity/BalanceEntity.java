@@ -1,6 +1,6 @@
 package com.task.payment_system.balance.entity;
 
-import com.task.payment_system.common.BaseEntity;
+import com.task.payment_system.common.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import java.math.BigDecimal;

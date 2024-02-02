@@ -1,15 +1,8 @@
 package com.task.payment_system.payment.entity;
 
-import com.task.payment_system.common.BaseEntity;
-import com.task.payment_system.payment.enums.ApprovalStatus;
-import com.task.payment_system.payment.enums.ApprovalStatus.ApprovalStatusConverter;
+import com.task.payment_system.common.base.BaseEntity;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

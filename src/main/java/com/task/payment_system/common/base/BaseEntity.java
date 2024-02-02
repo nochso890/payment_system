@@ -1,4 +1,4 @@
-package com.task.payment_system.common;
+package com.task.payment_system.common.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

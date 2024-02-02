@@ -1,6 +1,6 @@
 package com.task.payment_system.payment.entity;
 
-import com.task.payment_system.common.BaseEntity;
+import com.task.payment_system.common.base.BaseEntity;
 import com.task.payment_system.payment.enums.ApprovalStatus;
 import com.task.payment_system.payment.enums.ApprovalStatus.ApprovalStatusConverter;
 import jakarta.persistence.Column;

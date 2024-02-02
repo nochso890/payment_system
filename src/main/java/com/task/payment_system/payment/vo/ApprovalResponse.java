@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -23,10 +22,10 @@ public class ApprovalResponse {
     private LocalDateTime timestamp;
 
 
-    public ApprovalResponse(PaymentEntity entity){
+    public ApprovalResponse(PaymentEntity entity) {
         this.paymentId = entity.getPaymentId();
         this.status = entity.getApprovalStatus();
-        this.amount = entity.getAmount();
+        this.amount = entity.getAmount().setScale(2);
         this.currency = entity.getCurrency();
         this.timestamp = entity.getCreatedAt();
     }

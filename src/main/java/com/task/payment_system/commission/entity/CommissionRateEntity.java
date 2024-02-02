@@ -1,8 +1,8 @@
 package com.task.payment_system.commission.entity;
 
-import com.task.payment_system.commission.enums.CommissionType.CommissionTypeConverter;
-import com.task.payment_system.common.BaseEntity;
 import com.task.payment_system.commission.enums.CommissionType;
+import com.task.payment_system.commission.enums.CommissionType.CommissionTypeConverter;
+import com.task.payment_system.common.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;

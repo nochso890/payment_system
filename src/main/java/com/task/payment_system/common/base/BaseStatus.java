@@ -1,4 +1,4 @@
-package com.task.payment_system.common;
+package com.task.payment_system.common.base;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,9 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum BaseStatus {
 
-    SUCCESS("0000","SUCCESS"),
-    FAIL("1111","FAIL")
-    ;
+    SUCCESS("0000", "SUCCESS"),
+    FAIL("1111", "FAIL");
 
     private final String code;
     private final String message;

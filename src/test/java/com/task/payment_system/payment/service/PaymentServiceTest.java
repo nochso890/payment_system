@@ -1,7 +1,10 @@
 package com.task.payment_system.payment.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 class PaymentServiceTest {
 
+
 }
+
