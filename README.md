@@ -1,5 +1,5 @@
-git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic
+git clone https://github.com/nochso890/payment_system.git
+cd payment_system
 ./mvnw package
 java -jar target/*.jar
 
