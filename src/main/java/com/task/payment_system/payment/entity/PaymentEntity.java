@@ -13,11 +13,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
-@Builder
+@SuperBuilder
 @ToString(callSuper = true)
 @DynamicInsert
 @DynamicUpdate
@@ -43,6 +44,6 @@ public class PaymentEntity extends BaseEntity {
     @Column(name = "approval_status")
     @Convert(converter = ApprovalStatusConverter.class)
     @Builder.Default
-    private ApprovalStatus approvalStatus = ApprovalStatus.APPROVED;
+    private ApprovalStatus approvalStatus = ApprovalStatus.WAITING;
 
 }

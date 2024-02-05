@@ -1,6 +1,7 @@
 package com.task.payment_system.payment.vo;
 
 import com.task.payment_system.payment.entity.PaymentEntity;
+import com.task.payment_system.payment.enums.ApprovalStatus;
 import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class ApprovalRequest {
     @Valid
     private PaymentDetails paymentDetails;
 
-    public PaymentEntity toEntity(long creditCardId, long commissionId) {
+    public PaymentEntity toEntity(long creditCardId, long commissionId, ApprovalStatus status) {
         return PaymentEntity.builder()
             .paymentId("paymentId" + userId)
             .userId(userId)
@@ -30,6 +31,7 @@ public class ApprovalRequest {
             .merchantId(merchantId)
             .creditCardId(creditCardId)
             .commissionId(commissionId)
+            .approvalStatus(status)
             .build();
     }
 

@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum BalanceError {
 
-    NOT_FOUND_USER_BALANCE("800","해당 사용자 잔액정보를 찾을수 없습니다."),
+    USER_BALANCE_NOT_FOUND("800", "해당 사용자 잔액정보를 찾을수 없습니다."),
 
     ;
 

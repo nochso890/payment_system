@@ -8,14 +8,14 @@ import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @ToString
-@Builder
+@SuperBuilder
 @Entity(name = "commission_rate")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +29,5 @@ public class CommissionRateEntity extends BaseEntity {
     private BigDecimal amount;
     private BigDecimal rate;
     private boolean status;
-
 
 }

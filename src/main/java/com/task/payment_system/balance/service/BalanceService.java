@@ -17,7 +17,7 @@ public class BalanceService {
 
     public BalanceEntity getBalance(String userId) {
         return balanceRepository.findByUserId(userId)
-            .orElseThrow(() -> new BalanceException(BalanceError.NOT_FOUND_USER_BALANCE));
+            .orElseThrow(() -> new BalanceException(BalanceError.USER_BALANCE_NOT_FOUND));
     }
 
 }

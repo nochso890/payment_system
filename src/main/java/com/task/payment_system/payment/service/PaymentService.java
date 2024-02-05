@@ -10,7 +10,6 @@ import com.task.payment_system.payment.exception.PaymentException;
 import com.task.payment_system.payment.repository.CreditCardPaymentRepository;
 import com.task.payment_system.payment.repository.PaymentRepository;
 import com.task.payment_system.payment.vo.ApprovalRequest;
-import com.task.payment_system.payment.vo.EstimateRequest;
 import com.task.payment_system.payment.vo.PaymentDetails;
 import com.task.payment_system.utils.DateUtils;
 import java.math.BigDecimal;
@@ -29,34 +28,37 @@ public class PaymentService {
     private final BalanceService balanceService;
     private final CommissionService commissionService;
 
-    public CreditCardPaymentEntity searchPaymentByCardNumber(PaymentDetails details){
-        return creditCardPaymentRepository.findByCardNumber(details.getCardNumber()).orElseThrow(() -> new PaymentException(
-            PaymentError.NOT_FOUND_PAYMENT_DETAILS));
+    public CreditCardPaymentEntity searchPaymentByCardNumber(PaymentDetails details) {
+        return creditCardPaymentRepository.findByCardNumber(details.getCardNumber())
+            .orElseThrow(() -> new PaymentException(
+                PaymentError.NOT_FOUND_PAYMENT_DETAILS));
     }
 
-    public void verifyBeforeApproval(String userId, String expiryDate, BigDecimal amount){
+    public void verifyBeforeApproval(String userId, String expiryDate, BigDecimal amount) {
         verifyCreditCardExpiryDate(expiryDate);
-        verifySufficientBalance(userId,amount);
+        verifySufficientBalance(userId, amount);
     }
 
-    public PaymentEntity approval(ApprovalRequest request){
+    public PaymentEntity approval(ApprovalRequest request) {
         var creditCardPaymentEntity = searchPaymentByCardNumber(request.getPaymentDetails());
         var commission = commissionService.getCommission(request.getMerchantId());
-        return paymentRepository.save(request.toEntity(creditCardPaymentEntity.getId(),commission.getId()));
+        return paymentRepository.save(
+            request.toEntity(creditCardPaymentEntity.getId(), commission.getId(), ApprovalStatus.APPROVED));
     }
 
-    private void verifySufficientBalance(String userId, BigDecimal amount){
+    private void verifySufficientBalance(String userId, BigDecimal amount) {
         var balance = balanceService.getBalance(userId).getBalance();
-        if(amount.compareTo(balance) > 0){
+        if (amount.compareTo(balance) > 0) {
             throw new PaymentException(PaymentError.INSUFFICIENT_BALANCE);
         }
     }
 
     private void verifyCreditCardExpiryDate(String cardExpiryDate) {
-        try{
-            if(!DateUtils.isCardExpiryDated(cardExpiryDate))
+        try {
+            if (!DateUtils.isCardExpiryDated(cardExpiryDate)) {
                 throw new PaymentException(PaymentError.CREDIT_CARD_EXPIRED);
-        }catch (ParseException e){
+            }
+        } catch (ParseException e) {
             log.error("VerifyExpiryDateByCreditCard_ParserException", e);
 
         }
